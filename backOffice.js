@@ -28,5 +28,6 @@ const sendProduct = (e) => {
     },
   })
     .then((resp) => resp.json())
-    .then((createdObj) => console.log(createdObj));
+    .then((createdObj) => console.log(createdObj))
+    .catch(err =>console.log(err))
 };
