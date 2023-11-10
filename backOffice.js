@@ -84,7 +84,7 @@ const modProduct = (e) =>{
       };
       console.log(newProduct);
       fetch(URLId, {
-        method: "PuT",
+        method: "PUT",
         body: JSON.stringify(newProduct),
         headers: {
           Authorization: key,
