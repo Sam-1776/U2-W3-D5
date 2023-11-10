@@ -14,7 +14,6 @@ const generateDetail = () => {
   fetch(URL + "/" + newId, {
     headers: {
       Authorization: key,
-      "Content-Type": "application/json",
     },
   })
     .then((resp) => resp.json())

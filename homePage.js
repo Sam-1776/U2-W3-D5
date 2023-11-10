@@ -10,7 +10,6 @@ const key =
     fetch(URL,{
         headers: {
             Authorization: key,
-            "Content-Type": "application/json",
           },
     })
     .then(resp => resp.json())
@@ -58,6 +57,12 @@ const key =
       buttonV.onclick = function info() {
         window.location.assign("./details.html?Id=" + element._id);
       };
+      const buttonM = document.createElement("button");
+      buttonM.className = "btn btn-sm btn-outline-secondary";
+      buttonM.innerText = "Modify";
+      buttonM.onclick = function mod() {
+        window.location.assign("./backOffice.html?Id=" + element._id);
+      };
   
       card.appendChild(img);
       card.appendChild(cardBody);
@@ -67,6 +72,7 @@ const key =
       cardBody.appendChild(div);
       div.appendChild(divB);
       divB.appendChild(buttonV);
+      divB.appendChild(buttonM)
       col.appendChild(card);
       row.appendChild(col);
     });
