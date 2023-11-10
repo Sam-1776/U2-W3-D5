@@ -10,6 +10,8 @@ const URLId = "https://striveschool-api.herokuapp.com/api/product/" + newId;
 
 window.onload = () => {
   const form = document.querySelector("form");
+  const resBtn = document.querySelector("button[type='button'].btn-outline-success")
+    resBtn.onclick = resetValue;
   if (!newId) {
       form.onsubmit = sendProduct;
   } else {
@@ -67,9 +69,6 @@ fetch (URLId, {
     const delBtn = document.querySelector("button[type='button'].btn-outline-danger")
     delBtn.classList.remove("d-none")
     delBtn.onclick = deleteProduct;
-    const resBtn = document.querySelector("button[type='button'].btn-outline-success")
-    resBtn.classList.remove("d-none")
-    resBtn.onclick = resetValue;
 })
 }
 
