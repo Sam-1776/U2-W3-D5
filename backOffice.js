@@ -53,6 +53,9 @@ const sendProduct = (e) => {
           if (resp.status === 404) {
             throw new Error("404 Not found");
           }
+          if (resp.status === 429) {
+            throw new Error("429 too many request");
+          }
     
           throw new Error("Generic Fetching error");
         }
@@ -87,7 +90,10 @@ fetch (URLId, {
         throw new Error("403 Forbidden");
       }
       if (resp.status === 404) {
-        throw new Error(resp.status);
+        throw new Error("404 Not found");
+      }
+      if (resp.status === 429) {
+        throw new Error("429 too many request");
       }
 
       throw new Error("Generic Fetching error");
@@ -148,6 +154,9 @@ const modProduct = (e) =>{
               if (resp.status === 404) {
                 throw new Error("404 Not found");
               }
+              if (resp.status === 429) {
+                throw new Error("429 too many request");
+              }
         
               throw new Error("Generic Fetching error");
             }
@@ -185,8 +194,11 @@ const deleteProduct = () =>{
                   throw new Error("403 Forbidden");
                 }
                 if (resp.status === 404) {
-                  throw new Error(resp.status);
+                    throw new Error("404 Not found");
                 }
+                if (resp.status === 429) {
+                    throw new Error("429 too many request");
+                  }
           
                 throw new Error("Generic Fetching error");
               }

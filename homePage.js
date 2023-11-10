@@ -26,6 +26,9 @@ const key =
             if (resp.status === 404) {
               throw new Error("404 Not found");
             }
+            if (resp.status === 429) {
+                throw new Error("429 too many request");
+              }
       
             throw new Error("Generic Fetching error");
           }
