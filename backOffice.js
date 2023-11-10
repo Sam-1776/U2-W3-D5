@@ -39,12 +39,33 @@ const sendProduct = (e) => {
       "Content-Type": "application/json",
     },
   })
-    .then((resp) => resp.json())
+    .then((resp) => {
+        if (!resp.ok) {
+          if (resp.status === 400) {
+            throw new Error("400 Bad request");
+          }
+          if (resp.status === 401) {
+            throw new Error("401 Unauthorized");
+          }
+          if (resp.status === 403) {
+            throw new Error("403 Forbidden");
+          }
+          if (resp.status === 404) {
+            throw new Error("404 Not found");
+          }
+    
+          throw new Error("Generic Fetching error");
+        }
+        return resp.json()})
     .then((createdObj) => {
         window.location.assign("./homePage.html")
         console.log(createdObj)
     })
-    .catch(err =>console.log(err))
+    .catch(err => {
+        const errore = document.querySelector(".alert")
+        errore.classList.remove("d-none")
+        errore.innerText = err;
+    })
 };
 
 const checkMod = () =>{
@@ -54,7 +75,24 @@ fetch (URLId, {
         Authorization: key,
       },
 })
-.then(resp => resp.json())
+.then(resp => {
+    if (!resp.ok) {
+      if (resp.status === 400) {
+        throw new Error("400 Bad request");
+      }
+      if (resp.status === 401) {
+        throw new Error("401 Unauthorized");
+      }
+      if (resp.status === 403) {
+        throw new Error("403 Forbidden");
+      }
+      if (resp.status === 404) {
+        throw new Error(resp.status);
+      }
+
+      throw new Error("Generic Fetching error");
+    }
+    return resp.json()})
 .then(obj => {
     const form = document.querySelector("form")
     document.getElementById("pName").value = obj.name
@@ -69,6 +107,11 @@ fetch (URLId, {
     const delBtn = document.querySelector("button[type='button'].btn-outline-danger")
     delBtn.classList.remove("d-none")
     delBtn.onclick = deleteProduct;
+})
+.catch(err => {
+    const errore = document.querySelector(".alert")
+    errore.classList.remove("d-none")
+    errore.innerText = err;
 })
 }
 
@@ -91,11 +134,32 @@ const modProduct = (e) =>{
           "Content-Type": "application/json",
         },
       })
-        .then((resp) => resp.json())
+        .then((resp) =>{
+            if (!resp.ok) {
+              if (resp.status === 400) {
+                throw new Error("400 Bad request");
+              }
+              if (resp.status === 401) {
+                throw new Error("401 Unauthorized");
+              }
+              if (resp.status === 403) {
+                throw new Error("403 Forbidden");
+              }
+              if (resp.status === 404) {
+                throw new Error("404 Not found");
+              }
+        
+              throw new Error("Generic Fetching error");
+            }
+            return resp.json()})
         .then((createdObj) => {
             window.location.assign("./homePage.html")
             console.log(createdObj)})
-        .catch(err =>console.log(err))
+            .catch(err => {
+                const errore = document.querySelector(".alert")
+                errore.classList.remove("d-none")
+                errore.innerText = err;
+            })
     }
 
 const deleteProduct = () =>{
@@ -110,10 +174,31 @@ const deleteProduct = () =>{
 
         })
         .then(resp => {
+            if (!resp.ok) {
+                if (resp.status === 400) {
+                  throw new Error("400 Bad request");
+                }
+                if (resp.status === 401) {
+                  throw new Error("401 Unauthorized");
+                }
+                if (resp.status === 403) {
+                  throw new Error("403 Forbidden");
+                }
+                if (resp.status === 404) {
+                  throw new Error(resp.status);
+                }
+          
+                throw new Error("Generic Fetching error");
+              }
             
             window.location.assign("./homePage.html")
             return resp.json()
             
+        })
+        .catch(err => {
+            const errore = document.querySelector(".alert")
+            errore.classList.remove("d-none")
+            errore.innerText = err;
         })
     }
 }

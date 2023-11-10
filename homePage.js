@@ -13,6 +13,22 @@ const key =
           },
     })
     .then(resp => {
+        if (!resp.ok) {
+            if (resp.status === 400) {
+              throw new Error("400 Bad request");
+            }
+            if (resp.status === 401) {
+              throw new Error("401 Unauthorized");
+            }
+            if (resp.status === 403) {
+              throw new Error("403 Forbidden");
+            }
+            if (resp.status === 404) {
+              throw new Error("404 Not found");
+            }
+      
+            throw new Error("Generic Fetching error");
+          }
         const spinner = document.querySelector(".spinner-border");
         spinner.classList.add("d-none")
         return resp.json()})
@@ -20,7 +36,11 @@ const key =
         generateCard(arrObj)
         console.log(arrObj)
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        const errore = document.querySelector(".alert")
+        errore.classList.remove("d-none")
+        errore.innerText = err;
+    })
   }
 
 
