@@ -12,7 +12,10 @@ const key =
             Authorization: key,
           },
     })
-    .then(resp => resp.json())
+    .then(resp => {
+        const spinner = document.querySelector(".spinner-border");
+        spinner.classList.add("d-none")
+        return resp.json()})
     .then(arrObj => {
         generateCard(arrObj)
         console.log(arrObj)
