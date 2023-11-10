@@ -25,12 +25,12 @@ const generateDetail = () => {
 const page = (x) =>{
   const container = document.querySelector(".container");
   const h1 = document.createElement("h1");
-  h1.innerText = `${x.name}`;
+  h1.innerText = `${x.brand} > ${x.name}`;
   const img = document.createElement("img");
-  img.className = ("border border-secondary")
+  img.className = ("rounded img-fluid")
   img.src = x.imageUrl;
   const h4 = document.createElement("h4");
-  h4.innerText = `${x.brand}`;
+  h4.innerText = `${x.name}`;
   const h5 = document.createElement("h5")
   h5.innerText =`${x.description}`;
   const p = document.createElement("p")

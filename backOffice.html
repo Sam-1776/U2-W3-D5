@@ -29,23 +29,23 @@
         <form>
             <div>
                 <label for="pName" class="d-block">Product name</label>
-                <input id="pName" type="text" class="border-bottom bg-dark">
+                <input id="pName" type="text" class="border-bottom bg-dark" required>
             </div>
             <div>
                 <label for="desctiption" class="d-block">Description Product</label>
-                <textarea id="desctiption" cols="30"></textarea>
+                <textarea id="desctiption" cols="30"></textarea required>
             </div>
             <div>
                 <label for="brand" class="d-block">Brand Product</label>
-                <input id="brand" type="text">
+                <input id="brand" type="text" required>
             </div>
             <div>
                 <label for="Price" class="d-block">Price Product</label>
-                <input id="Price" type="number" min="0">
+                <input id="Price" type="number" min="0" required>
             </div>
             <div>
                 <label for="Img" class="d-block">Image Product</label>
-                <input id="Img" type="url">
+                <input id="Img" type="url" required>
             </div>
            <div class="d-flex justify-content-between">
                 <button class="btn btn-outline-light fw-bold" type="submit">Save</button>

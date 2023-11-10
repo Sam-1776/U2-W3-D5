@@ -30,7 +30,7 @@ const key =
     row.className = "row";
     x.forEach((element) => {
       const col = document.createElement("div");
-      col.className = "col-4";
+      col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
       const card = document.createElement("div");
       card.className = "card mb-4 shadow-sm";
       const img = document.createElement("img");
@@ -44,9 +44,6 @@ const key =
       const p = document.createElement("p");
       p.className = "card-text mb-1";
       p.innerText = `${element.name}`;
-      const newP = document.createElement("p");
-      newP.className = "card-text";
-      newP.innerText = `${element.description}`;
       const div = document.createElement("div");
       div.className = "d-flex justify-content-between align-items-center";
       const divB = document.createElement("div");
@@ -68,7 +65,6 @@ const key =
       card.appendChild(cardBody);
       cardBody.appendChild(h5);
       cardBody.appendChild(p);
-      cardBody.appendChild(newP)
       cardBody.appendChild(div);
       div.appendChild(divB);
       divB.appendChild(buttonV);

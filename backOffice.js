@@ -38,7 +38,10 @@ const sendProduct = (e) => {
     },
   })
     .then((resp) => resp.json())
-    .then((createdObj) => console.log(createdObj))
+    .then((createdObj) => {
+        window.location.assign("./homePage.html")
+        console.log(createdObj)
+    })
     .catch(err =>console.log(err))
 };
 
@@ -90,7 +93,9 @@ const modProduct = (e) =>{
         },
       })
         .then((resp) => resp.json())
-        .then((createdObj) => console.log(createdObj))
+        .then((createdObj) => {
+            window.location.assign("./homePage.html")
+            console.log(createdObj)})
         .catch(err =>console.log(err))
     }
 
